@@ -6,235 +6,355 @@
 
     <title>AI时代的教学新范式：铸练赋能课堂的提示词工程能力</title>
 
+    <!-- TailwindCSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Reveal.js Core CSS -->
     <link rel="stylesheet" href="dist/reset.css">
     <link rel="stylesheet" href="dist/reveal.css">
-    <link rel="stylesheet" href="dist/theme/league.css" id="theme">
+    
+    <!-- Theme - Using a dark, neutral base to build upon -->
+    <link rel="stylesheet" href="dist/theme/black.css" id="theme">
 
-    <!-- Theme used for syntax highlighting of code -->
+    <!-- Code Highlighting -->
     <link rel="stylesheet" href="plugin/highlight/monokai.css">
 
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- p5.js for interactive background -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>
+
     <style>
-        .reveal .slides section .fragment.highlight-blue {
-            opacity: 1;
-            visibility: visible;
+        :root {
+            --tesla-red: #E31937;
+            --gradient-start: #4a2f2f;
+            --gradient-end: #2c1a1a;
         }
-        .reveal .slides section .fragment.highlight-blue.visible {
-            color: #4285F4;
+
+        .reveal {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
         }
-        .reveal table {
-            margin: auto;
-            border-collapse: collapse;
-            font-size: 0.8em;
+
+        #p5-canvas-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.15;
         }
-        .reveal th, .reveal td {
-            border: 1px solid #ccc;
-            padding: 8px 12px;
+
+        .reveal h1, .reveal h2, .reveal h3 {
+            font-family: "PingFang SC", "Helvetica Neue", "Microsoft YaHei", sans-serif;
+            font-weight: 600;
+            color: #fff;
         }
-        .reveal th {
-            background-color: #f2f2f2;
+
+        .reveal h1 {
+            font-size: 3.5em;
+            text-shadow: 0 0 10px rgba(0,0,0,0.5);
+        }
+        .reveal h2 {
+            font-size: 2.5em;
+        }
+        
+        .reveal p, .reveal li, .reveal small {
+            color: #eee;
+        }
+        
+        .reveal strong, .reveal .highlight {
+            color: var(--tesla-red);
+            font-weight: 600;
+        }
+
+        .reveal .english-accent {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            font-size: 0.5em;
+            color: #aaa;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            display: block;
+            margin-top: -10px;
+        }
+        
+        .bento-grid {
+            display: grid;
+            gap: 20px;
+            width: 100%;
+            height: 75vh;
+        }
+        
+        .bento-item {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 24px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .bento-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        
+        .reveal pre {
+            width: 100%;
+            margin-top: 15px !important;
+            border-radius: 12px;
+            box-shadow: none;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        .reveal code {
+            max-height: 400px;
+        }
+        
+        .reveal .icon {
+            font-size: 2em;
+            color: var(--tesla-red);
+            opacity: 0.7;
+        }
+
+        .reveal .quote-author {
+            margin-top: 20px;
+            font-style: italic;
+            text-align: right;
+        }
+        
+        .reveal .slide-number {
+            color: var(--tesla-red);
         }
     </style>
-
 </head>
 <body>
+    <div id="p5-canvas-container"></div>
     <div class="reveal">
         <div class="slides">
-            
-            <!-- Slide 1: Cover Page -->
-            <section data-background-image="https://source.unsplash.com/1600x900/?classroom,technology,teacher" data-background-opacity="0.5">
-                <h1 style="color: #fff; text-shadow: 2px 2px 4px #000;">AI时代的教学新范式</h1>
-                <h3 style="color: #fff; text-shadow: 1px 1px 2px #000;">铸练赋能课堂的提示词工程能力</h3>
-                <p style="margin-top: 50px; color: #fff; text-shadow: 1px 1px 2px #000;">主讲人：[您的姓名]</p>
+
+            <!-- Slide 1: Cover -->
+            <section>
+                <span class="english-accent">AI Math Magic Art Studio Teacher Training</span>
+                <h1>AI时代的教学新范式</h1>
+                <h3 class="mt-4">铸练赋能课堂的提示词工程能力</h3>
+                <p class="mt-12">上海美高学校 | 教师专项培训</p>
             </section>
 
-            <!-- Slide 2: Opening -->
+            <!-- Slide 2: The Challenge -->
             <section>
-                <h2>我们是否正面临这些教学挑战？</h2>
-                <ul>
-                    <li class="fragment">备课耗时耗力，查找整理资料占据大量时间？</li>
-                    <li class="fragment">课堂互动形式单一，难以激发所有学生的兴趣？</li>
-                    <li class="fragment">想为不同水平的学生提供个性化辅导，但分身乏术？</li>
-                    <li class="fragment">批改开放性作业（如作文），工作量巨大且反馈耗时？</li>
-                </ul>
-                <p class="fragment" style="margin-top: 40px; font-weight: bold; color: #1abc9c;">
-                    AI 不是来取代老师，而是成为我们每个人的“全能教学助理”。
-                </p>
+                <h2>您是否正面临这些<strong class="highlight">教学挑战</strong>？</h2>
+                <span class="english-accent">ARE WE FACING THESE CHALLENGES?</span>
+                <div class="bento-grid grid-cols-2 mt-8 text-2xl">
+                    <div class="bento-item fragment">
+                        <i class="fas fa-clock icon mb-4"></i>
+                        <p><strong>备课耗时</strong>，查找和整合多媒体资料占据大量时间？</p>
+                    </div>
+                    <div class="bento-item fragment">
+                        <i class="fas fa-users icon mb-4"></i>
+                        <p>课堂互动单一，难以激发所有学生的<strong>创作兴趣</strong>？</p>
+                    </div>
+                    <div class="bento-item fragment">
+                        <i class="fas fa-puzzle-piece icon mb-4"></i>
+                        <p>想提供<strong>个性化辅导</strong>，但分身乏术？</p>
+                    </div>
+                    <div class="bento-item fragment">
+                        <i class="fas fa-pen-ruler icon mb-4"></i>
+                        <p><strong>创意性作业</strong>的评估标准难以统一，工作量巨大？</p>
+                    </div>
+                </div>
             </section>
 
             <!-- Slide 3: Mental Model -->
             <section>
-                <h2>核心心智模型</h2>
-                <h3>从“万能搜索引擎”到“教学设计伙伴”</h3>
-                <p class="fragment">常见的误区：把AI当作一个“更会说话的搜索引擎”。</p>
-                <p class="fragment" style="color: #e74c3c;">这只能发挥它 10% 的能力。</p>
-                <p class="fragment" style="margin-top: 30px;">
-                    <strong>正确的心智模型：</strong><br>
-                    把AI视为一个不知疲倦、博学多才的<span class="fragment highlight-blue">“教学设计伙伴”</span>。
-                </p>
-                <p class="fragment">
-                    你的角色是 <span style="color: #f1c40f;">“课程总设计师”</span>，负责提出教育目标和教学理念，AI负责将你的理念快速转化为具体的教学资源。
-                </p>
-            </section>
-
-            <!-- Slide 4: Golden Four Steps (PTCF) -->
-            <section>
-                <h2>基础招式：教学提示词的“黄金四步法” (PTCF)</h2>
-                <ol>
-                    <li class="fragment"><strong>角色 (Persona):</strong> “设定AI的教学身份” <br><small><em>“你是一位经验丰富的高中历史老师。”</em></small></li>
-                    <li class="fragment"><strong>任务 (Task):</strong> “明确你的教学指令” <br><small><em>“请设计一个关于‘光合作用’的课堂导入活动。”</em></small></li>
-                    <li class="fragment"><strong>上下文 (Context):</strong> “提供学情和教学背景” <br><small><em>“我的学生是小学五年级，活动时间需控制在10分钟以内。”</em></small></li>
-                    <li class="fragment"><strong>格式 (Format):</strong> “定义你想要的课件形式” <br><small><em>“请以问答形式呈现，包含3个引导性问题和一个生动的比喻。”</em></small></li>
-                </ol>
-            </section>
-            
-            <!-- Slide 5: Few-shot Learning -->
-            <section>
-                <h2>AI的“备课绝技”(1)：零样本 vs. 少样本</h2>
-                <div style="display: flex; gap: 20px;">
-                    <div class="fragment" style="flex: 1; background: rgba(0,0,0,0.1); padding: 20px; border-radius: 10px;">
-                        <h4>零样本 (Zero-shot)</h4>
-                        <p>快速生成通用素材。</p>
-                        <pre><code class="language-plaintext" data-trim>
-"请为《静夜思》提供一份赏析。"
-                        </code></pre>
+                <h2>核心心智模型：从“搜索引擎”到<strong class="highlight">“教学设计伙伴”</strong></h2>
+                <span class="english-accent">MENTAL MODEL SHIFT: FROM SEARCH ENGINE TO PEDAGOGICAL PARTNER</span>
+                <div class="bento-grid grid-cols-2 mt-8">
+                    <div class="bento-item fragment">
+                        <h3 class="text-3xl">旧模式：AI是工具</h3>
+                        <p class="mt-4">我向AI“索取”信息，得到一堆素材，自己筛选、设计。</p>
+                        <i class="fas fa-magnifying-glass icon mt-8 text-6xl"></i>
                     </div>
-                    <div class="fragment" style="flex: 1; background: rgba(0,0,0,0.1); padding: 20px; border-radius: 10px;">
-                        <h4>少样本 (Few-shot)</h4>
-                        <p>定制符合你教学风格的素材。</p>
-                        <pre><code class="language-plaintext" data-trim>
-范例1：
-题目：为什么苹果会掉下来？
-答案：因为地球的引力。
-
-现在，请按此风格，为我出5道关于‘声音传播’的简答题。
-                        </code></pre>
+                    <div class="bento-item fragment">
+                        <h3 class="text-3xl">新范式：AI是伙伴</h3>
+                        <p class="mt-4">我提出<strong class="highlight">教学理念</strong>，AI与我共同“协作”，快速生成完整的教学资源。</p>
+                        <i class="fas fa-hands-helping icon mt-8 text-6xl"></i>
                     </div>
                 </div>
-                <p class="fragment" style="margin-top: 30px; color: #1abc9c;"><strong>教学价值：</strong>让AI“学会”你的出题风格和解释方式，实现个性化备课。</p>
-            </section>
-
-            <!-- Slide 6: Chain of Thought (CoT) -->
-            <section>
-                <h2>AI的“备课绝技”(2)：思维链 (CoT)</h2>
-                <p>用于生成深度解析教案，尤其适合数理化和逻辑推理。</p>
-                <p class="fragment"><strong>魔法咒语：</strong>在提示词末尾加上 <span style="color: #f1c40f;">“让我们一步一步地思考”</span></p>
-                <pre class="fragment"><code class="language-plaintext" data-trim>
-应用题：一个水池有甲乙两个进水管...两管齐开多久能注满？
-请用思维链的方式，为我生成一份详细的解题步骤，用于课堂讲解。
-                </code></pre>
-                <p class="fragment" style="font-size: 0.8em; text-align: left;"><strong>AI输出的CoT过程：</strong><br>
-                1. 理解问题 → 2. 设定单位“1” → 3. 计算各管效率 → 4. 计算合作效率 → 5. 计算总时间 → 6. 得出结论。</p>
-                <p class="fragment" style="margin-top: 20px; color: #1abc9c;"><strong>教学价值：</strong> 生成的不再是答案，而是一份逻辑清晰的教学脚本。</p>
-            </section>
-
-            <!-- Slide 7: Step-back Prompting -->
-            <section>
-                <h2>AI的“课堂魔法”(1)：后退一步法</h2>
-                <p>用于激发学生高阶思维，设计探究性问题。</p>
-                <div class="fragment" style="background: rgba(0,0,0,0.1); padding: 15px; border-radius: 5px; margin-top: 20px;">
-                    <p><strong>第一步 (后退/抽象):</strong></p>
-                    <p><small>“请先从‘国家统一’这个抽象概念出发，分析其通常需要具备哪些核心要素？”</small></p>
-                </div>
-                <div class="fragment" style="background: rgba(0,0,0,0.1); padding: 15px; border-radius: 5px; margin-top: 10px;">
-                    <p><strong>第二步 (具体/应用):</strong></p>
-                    <p><small>“很好。现在，请让学生运用刚才讨论的要素，来分析秦始皇在统一六国过程中做了哪些具体的事？”</small></p>
-                </div>
-                <p class="fragment" style="margin-top: 20px; color: #1abc9c;"><strong>教学价值：</strong> 将知识点从“记忆”提升到“分析”和“评估”的层面。</p>
+                <p class="fragment mt-8 text-3xl">你的角色：<strong class="highlight">课程总设计师 (Chief Course Architect)</strong></p>
             </section>
             
-            <!-- Slide 8: Role Playing -->
+            <!-- Slide 4: Feynman + AI -->
             <section>
-                <h2>AI的“课堂魔法”(2)：角色扮演</h2>
-                <p>创造沉浸式学习体验，尤其适合语言、历史、思政课。</p>
-                <pre class="fragment"><code class="language-plaintext" data-trim>
-[角色] 你现在是伦敦一家咖啡店的服务员。
-[任务] 我将扮演游客来点餐，如果我的表达不地道，请温和地纠正我。
-
-学生：“I want a coffee.”
-AI：“Of course! (A more natural way is 'Could I get a coffee, please?')”
-                </code></pre>
-                <p class="fragment" style="margin-top: 20px; color: #1abc9c;"><strong>教学价值：</strong> 为学生提供一个零压力、可随时反馈的“语言环境”和“情景模拟器”。</p>
-            </section>
-            
-            <!-- Slide 9: Multimodal Assessment -->
-            <section>
-                <h2>AI的“评价助手”：多模态与个性化反馈</h2>
-                <p>上传学生作业图片（作文、画作、解题过程），让AI辅助批改。</p>
-                <div style="display: flex; align-items: center; gap: 20px;">
-                    <img class="fragment" src="https://source.unsplash.com/400x300/?student,writing" alt="Student writing" style="border-radius: 10px; width: 40%;">
-                    <div class="fragment" style="width: 60%; text-align: left;">
-                        <h4>提示词示例:</h4>
-                        <pre style="font-size: 0.7em;"><code class="language-plaintext" data-trim>
-[角色] 你是一位鼓励型的高中语文老师。
-[任务] 根据这张作文图片，从‘中心思想’、‘结构逻辑’和‘语言表达’三方面评价。
-[格式] 对每个方面，先指出一个优点，再提出一个改进建议。
-                        </code></pre>
+                <h2>教学理念：用<strong class="highlight">费曼学习法</strong>驾驭AI</h2>
+                <span class="english-accent">THE FEYNMAN TECHNIQUE AS OUR AI PEDAGOGY</span>
+                <p class="mt-4">费曼学习法的核心是“以教为学”，这与提示词工程的本质不谋而合。</p>
+                <div class="bento-grid grid-cols-2 grid-rows-2 mt-8">
+                    <div class="bento-item fragment">
+                        <h4>1. 锁定概念 (Concept)</h4>
+                        <p>老师明确本节课的数学知识点。</p>
+                    </div>
+                    <div class="bento-item fragment">
+                        <h4>2. 尝试教授 (Teach)</h4>
+                        <p>老师编写提示词，<strong>“教”AI</strong>如何向学生解释这个概念。</p>
+                    </div>
+                    <div class="bento-item fragment">
+                        <h4>3. 回顾纠错 (Review)</h4>
+                        <p>审视AI生成的作品，如果效果不佳，说明我们的“教案”（提示词）有漏洞。</p>
+                    </div>
+                    <div class="bento-item fragment">
+                        <h4>4. 简化提炼 (Simplify)</h4>
+                        <p>不断优化提示词，直到AI能用最直观、最富美感的方式呈现给学生。</p>
                     </div>
                 </div>
-                <p class="fragment" style="margin-top: 20px; color: #1abc9c;"><strong>教学价值：</strong> 提高批改效率，提供结构化、多维度的反馈。</p>
             </section>
 
-            <!-- Slide 10: Best Practices for Teachers -->
+            <!-- Slide 5: PTCF -->
             <section>
-                <h2>教师专属的最佳实践</h2>
-                <ul>
-                    <li class="fragment"><strong>建立你的“教学提示词库”：</strong>按学科、年级、课时分类，形成个人数字化教辅资源。</li>
-                    <li class="fragment"><strong>指令要包含“教学法”：</strong>告诉AI你想用什么教学方法（如“用苏格拉底诘问法”）。</li>
-                    <li class="fragment"><strong>安全第一，验证为王：</strong>AI生成的事实性知识 <span style="color: #e74c3c;">必须</span> 经过二次核实！</li>
-                    <li class="fragment"><strong>鼓励学生一起玩：</strong>设计一堂课，让学生自己写提示词，培养他们的AI协作能力。</li>
-                </ul>
-            </section>
-
-            <!-- Slide 11: 30-Day Action Plan -->
-            <section>
-                <h2>你的30天教学创新计划</h2>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>阶段</th>
-                            <th>核心任务</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="fragment">
-                            <td><strong>第一周：备课提效</strong></td>
-                            <td>每天用 PTCF 公式，让AI帮你完成一项备课任务。</td>
-                        </tr>
-                        <tr class="fragment">
-                            <td><strong>第二周：课堂创新</strong></td>
-                            <td>用角色扮演或后退一步法，设计一个课堂互动环节。</td>
-                        </tr>
-                        <tr class="fragment">
-                            <td><strong>第三周：评价辅助</strong></td>
-                            <td>选取5份学生作业，尝试用AI辅助生成初步反馈。</td>
-                        </tr>
-                        <tr class="fragment">
-                            <td><strong>第四周：分享共创</strong></td>
-                            <td>在备课组内，分享一个你用AI成功赋能教学的案例。</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <h2>基础招式：教学提示词的<strong class="highlight">“黄金四步法”</strong></h2>
+                <span class="english-accent">THE GOLDEN FOUR-STEP FORMULA (PTCF)</span>
+                 <div class="bento-grid grid-cols-4 mt-8 text-xl">
+                    <div class="bento-item fragment">
+                        <h3 class="text-3xl">角色<br/><span class="english-accent -mt-2">Persona</span></h3>
+                        <p class="mt-4">“你是一位擅长几何图形的艺术家。”</p>
+                    </div>
+                    <div class="bento-item fragment">
+                        <h3 class="text-3xl">任务<br/><span class="english-accent -mt-2">Task</span></h3>
+                        <p class="mt-4">“创作一幅画，可视化地展示‘加法’。”</p>
+                    </div>
+                    <div class="bento-item fragment">
+                         <h3 class="text-3xl">上下文<br/><span class="english-accent -mt-2">Context</span></h3>
+                         <p class="mt-4">“面向G3学生，他们刚学会加法，画面需要生动有趣。”</p>
+                    </div>
+                     <div class="bento-item fragment">
+                        <h3 class="text-3xl">格式<br/><span class="english-accent -mt-2">Format</span></h3>
+                        <p class="mt-4">“风格为儿童插画，色彩鲜艳，画面比例4:3。”</p>
+                    </div>
+                </div>
             </section>
             
-            <!-- Slide 12: Conclusion -->
+            <!-- Curriculum Section -->
             <section>
-                <h2>总结：未来已来，语言即力量</h2>
-                <blockquote class="fragment">
-                    AI不会取代你，但掌握AI协作能力的老师，会重塑未来的教育。
+                <section>
+                    <h2>课程实践：<strong class="highlight">G3 探索与发现</strong></h2>
+                    <span class="english-accent">GRADE 3: EXPLORATION AND DISCOVERY</span>
+                    <p class="mt-8 text-3xl">熟练掌握AI图文生成基础，用AI可视化基础数学概念，激发学生浓厚兴趣。</p>
+                </section>
+
+                <section>
+                    <h3>G3课例 (1): 我的幸运数字</h3>
+                     <div class="bento-grid grid-cols-2 mt-4">
+                        <div class="bento-item row-span-2 flex justify-center items-center">
+                           <img src="https://source.unsplash.com/800x600/?abstract,number,7" alt="AI art for number 7" class="rounded-lg"/>
+                        </div>
+                        <div class="bento-item text-left">
+                           <p><strong><i class="fas fa-book-open mr-2"></i>核心数学概念:</strong> 数字0-9的认识</p>
+                           <p class="mt-2"><strong><i class="fas fa-palette mr-2"></i>AI创作活动:</strong> 为自己最喜欢的数字赋予性格，用AI画出“勇敢的7”或“温柔的2”。</p>
+                        </div>
+                        <div class="bento-item text-left">
+                            <h4><i class="fas fa-magic-wand-sparkles mr-2"></i>Ideogram提示词案例</h4>
+                            <pre><code class="language-plaintext" data-trim style="font-size: 0.8em;">
+A cinematic movie poster featuring the number '7' as a brave knight. The number is crafted from shining silver armor, holding a glowing sword. It stands on a mountain peak against a dramatic sunset. Typography reads "The Courageous Seven". fantasy, epic, detailed, illustration. --ar 16:9
+                            </code></pre>
+                        </div>
+                    </div>
+                </section>
+                
+                <section>
+                    <h3>G3课例 (2): “聚合”的艺术</h3>
+                     <div class="bento-grid grid-cols-2 mt-4">
+                        <div class="bento-item row-span-2 flex justify-center items-center">
+                           <img src="https://source.unsplash.com/800x600/?galaxy,sun,stars" alt="AI art for addition" class="rounded-lg"/>
+                        </div>
+                        <div class="bento-item text-left">
+                           <p><strong><i class="fas fa-calculator mr-2"></i>核心数学概念:</strong> 加法</p>
+                           <p class="mt-2"><strong><i class="fas fa-palette mr-2"></i>AI创作活动:</strong> 创作一幅画，许多闪亮的小星星汇聚成一个巨大的、发光的太阳，来表现“聚合”（加法）。</p>
+                        </div>
+                        <div class="bento-item text-left">
+                            <h4><i class="fas fa-magic-wand-sparkles mr-2"></i>Ideogram提示词案例</h4>
+                            <pre><code class="language-plaintext" data-trim style="font-size: 0.8em;">
+A whimsical children's book illustration where countless small, twinkling stars are flowing like a river into a giant, happy, smiling sun in the center of the universe. The sun radiates warm, golden light. The background is a deep cosmic blue. magical, vibrant, glowing. --ar 16:9
+                            </code></pre>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3>G3课例 (3): 镜子里的魔法</h3>
+                     <div class="bento-grid grid-cols-2 mt-4">
+                        <div class="bento-item row-span-2 flex justify-center items-center">
+                           <img src="https://source.unsplash.com/800x600/?symmetric,butterfly,kaleidoscope" alt="AI art for symmetry" class="rounded-lg"/>
+                        </div>
+                        <div class="bento-item text-left">
+                           <p><strong><i class="fas fa-vector-square mr-2"></i>核心数学概念:</strong> 轴对称</p>
+                           <p class="mt-2"><strong><i class="fas fa-palette mr-2"></i>AI创作活动:</strong> 用AI创作一幅具有完美中心对称或轴对称的蝴蝶、雪花或图腾。</p>
+                        </div>
+                        <div class="bento-item text-left">
+                            <h4><i class="fas fa-magic-wand-sparkles mr-2"></i>Ideogram提示词案例</h4>
+                            <pre><code class="language-plaintext" data-trim style="font-size: 0.8em;">
+A beautiful, intricate snowflake design, perfectly symmetrical. The snowflake is made of glowing blue and white crystal patterns against a dark background. macro photography, detailed, magical, winter. --ar 1:1
+                            </code></pre>
+                        </div>
+                    </div>
+                </section>
+            </section>
+            
+            <!-- Advanced Techniques Section -->
+            <section>
+                <section>
+                    <h2>进阶技巧：<strong class="highlight">赋能深度教学</strong></h2>
+                    <span class="english-accent">ADVANCED PROMPTING FOR DEEPER LEARNING</span>
+                    <p class="mt-8 text-3xl">当基础教学熟练后，我们可以用更高级的提示词技巧，设计探究式、项目制的学习活动。</p>
+                </section>
+
+                <section>
+                    <h3>进阶技巧 (1): 思维链 (CoT)</h3>
+                    <h4>让AI可视化“思考过程”</h4>
+                    <p class="mt-4"><strong>教学场景：</strong>G5-用视觉序列“证明”勾股定理</p>
+                    <pre class="fragment"><code class="language-plaintext" data-trim>
+[角色] 你是一位数学教育家和信息图表设计师。
+[任务] 我需要创作一个包含3个步骤的视觉序列，用面积法来证明勾股定理(a²+b²=c²)。
+[CoT] 让我们一步一步来设计：
+第一步，画一个直角三角形，三边长为a, b, c。
+第二步，以这个三角形的每条边为基础，向外画出三个正方形，面积分别为a², b², c²。
+第三步，通过图形变换或分割，清晰地展示两个小编长正方形的面积之和，恰好等于大斜边正方形的面积。
+[格式] 风格为简洁的教育信息图，使用清晰的线条和柔和的色彩。
+                    </code></pre>
+                </section>
+
+                 <section>
+                    <h3>进阶技巧 (2): 后退一步法 (Step-back)</h3>
+                    <h4>从抽象原则到具体创作</h4>
+                    <p class="mt-4"><strong>教学场景：</strong>G4-设计一个关于“斐波那契数列”的项目制学习</p>
+                    <div class="fragment mt-8">
+                        <p><strong>第一步 (后退):</strong> "请先作为一个自然哲学家，解释为什么数学规律（如斐波那契数列、黄金比例）会广泛存在于自然界中？列出5个自然界中蕴含斐波那契数列的例子。"</p>
+                    </div>
+                     <div class="fragment mt-8">
+                        <p><strong>第二步 (具体):</strong> "很好。现在，请学生从‘鹦鹉螺’、‘向日葵’或‘银河系’中选择一个主题，创作一幅艺术作品，并用发光的线条突出其斐波那契螺旋线。"</p>
+                    </div>
+                </section>
+            </section>
+
+            <!-- Conclusion Section -->
+            <section>
+                <h2>总结：<strong class="highlight">未来已来，语言即力量</strong></h2>
+                <span class="english-accent">CONCLUSION: THE FUTURE IS NOW, LANGUAGE IS POWER</span>
+                 <blockquote class="fragment mt-8 text-3xl">
+                    AI不会取代老师，但掌握AI协作能力的老师，会重塑未来的教育。
                 </blockquote>
                 <ul>
-                    <li class="fragment"><strong>心智模型：</strong> 你是AI的课程总设计师。</li>
-                    <li class="fragment"><strong>核心技法：</strong> PTCF是基础，思维链(CoT)是进阶。</li>
-                    <li class="fragment"><strong>教学创新：</strong> 角色扮演、后退一步法、多模态评价。</li>
-                    <li class="fragment"><strong>你的责任：</strong> 保持审查和批判性思维，永远做课堂的引导者。</li>
+                    <li class="fragment"><strong>教学心法：</strong> 像“课程总设计师”一样，与你的“教学设计伙伴”协作。</li>
+                    <li class="fragment"><strong>核心技法：</strong> 黄金四步法是基础，思维链、后退一步法是进阶。</li>
+                    <li class="fragment"><strong>费曼之魂：</strong> 用“教授AI”来倒逼自己对教学内容的深度理解。</li>
+                    <li class="fragment"><strong>教师之责：</strong> <strong class="highlight">永远保持审查和批判性思维</strong>，你才是课堂的最终引导者。</li>
                 </ul>
             </section>
 
-            <!-- Slide 13: Q&A -->
             <section>
                 <h1>Q&A</h1>
-                <h3>交流与探讨</h3>
-                <p style="margin-top: 50px;">Happy Prompting!</p>
+                <h3 class="mt-4">交流与探讨</h3>
+                <p class="mt-12">Happy Prompting!</p>
             </section>
 
         </div>
@@ -245,14 +365,75 @@ AI：“Of course! (A more natural way is 'Could I get a coffee, please?')”
     <script src="plugin/markdown/markdown.js"></script>
     <script src="plugin/highlight/highlight.js"></script>
     <script>
-        // More info about initialization & config:
-        // - https://revealjs.com/initialization/
-        // - https://revealjs.com/config/
         Reveal.initialize({
             hash: true,
-            // Learn about plugins: https://revealjs.com/plugins/
-            plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+            plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ],
+            slideNumber: true,
+            transition: 'slide', // 'fade', 'convex', 'zoom'
         });
+
+        // p5.js Sketch
+        let particles = [];
+        const sketch = (p) => {
+            p.setup = () => {
+                let canvas = p.createCanvas(p.windowWidth, p.windowHeight);
+                canvas.parent('p5-canvas-container');
+                for(let i = 0; i < 100; i++){
+                    particles.push(new Particle(p));
+                }
+            };
+
+            p.draw = () => {
+                p.clear();
+                particles.forEach((particle, index) => {
+                    particle.update();
+                    particle.draw();
+                    particle.checkParticles(particles.slice(index));
+                });
+            };
+            
+            p.windowResized = () => {
+                p.resizeCanvas(p.windowWidth, p.windowHeight);
+            }
+        };
+
+        class Particle {
+            constructor(p) {
+                this.p = p;
+                this.pos = p.createVector(p.random(p.width), p.random(p.height));
+                this.vel = p.createVector(p.random(-0.5, 0.5), p.random(-0.5, 0.5));
+                this.size = p.random(2, 5);
+            }
+
+            update() {
+                this.pos.add(this.vel);
+                this.edges();
+            }
+
+            draw() {
+                this.p.noStroke();
+                this.p.fill('rgba(227, 25, 55, 0.5)'); // Tesla Red with opacity
+                this.p.circle(this.pos.x, this.pos.y, this.size);
+            }
+
+            edges() {
+                if(this.pos.x < 0 || this.pos.x > this.p.width) this.vel.x *= -1;
+                if(this.pos.y < 0 || this.pos.y > this.p.height) this.vel.y *= -1;
+            }
+
+            checkParticles(particles) {
+                particles.forEach(particle => {
+                    const d = this.p.dist(this.pos.x, this.pos.y, particle.pos.x, particle.pos.y);
+                    if(d < 120) {
+                        const alpha = this.p.map(d, 0, 120, 0.3, 0);
+                        this.p.stroke(`rgba(227, 25, 55, ${alpha})`);
+                        this.p.line(this.pos.x, this.pos.y, particle.pos.x, particle.pos.y);
+                    }
+                });
+            }
+        }
+
+        new p5(sketch);
     </script>
 </body>
 </html>
