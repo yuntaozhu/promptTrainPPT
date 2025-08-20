@@ -28,103 +28,61 @@
     <style>
         :root {
             --tesla-red: #E31937;
-            --gradient-start: #1c1c1c; /* Deeper orange base */
-            --gradient-end: #111;
+            --gradient-start: #1e1e1e;
+            --gradient-end: #121212;
         }
 
         .reveal {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
-            font-size: 32px; /* Adjusted base font size for better scaling */
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+            background: linear-gradient(145deg, var(--gradient-start), var(--gradient-end));
+            font-size: 30px;
         }
 
         #p5-canvas-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-            opacity: 0.1; /* Reduced opacity for subtlety */
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; opacity: 0.1;
         }
+        .reveal .slides { z-index: 1; }
 
-        .reveal .slides {
-            z-index: 1;
-        }
-
-        .reveal h1, .reveal h2, .reveal h3 {
-            font-family: "PingFang SC", "Helvetica Neue", "Microsoft YaHei", sans-serif;
-            font-weight: 600;
-            color: #fff;
-        }
-
-        .reveal h1 { font-size: 3.2em; text-shadow: 0 0 15px rgba(0,0,0,0.7); }
-        .reveal h2 { font-size: 2.2em; }
-        .reveal h3 { font-size: 1.6em; }
+        .reveal h1, .reveal h2, .reveal h3, .reveal h4 { font-weight: 600; color: #fff; text-shadow: none; }
+        .reveal h1 { font-size: 3em; }
+        .reveal h2 { font-size: 2em; margin-bottom: 20px !important; }
+        .reveal h3 { font-size: 1.5em; }
+        .reveal h4 { font-size: 1.1em; color: #f0f0f0; }
         
-        .reveal p, .reveal li { color: #e0e0e0; line-height: 1.5; }
-        .reveal small { color: #bbb; }
+        .reveal p, .reveal li { color: #ccc; line-height: 1.45; }
         
-        .reveal strong, .reveal .highlight {
-            color: var(--tesla-red);
-            font-weight: 600;
-        }
+        .reveal strong, .reveal .highlight { color: var(--tesla-red); }
         
         .reveal .english-accent {
-            font-family: 'Helvetica Neue', Arial, sans-serif;
-            font-size: 0.4em;
-            color: #999;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            display: block;
-            margin-bottom: 10px;
+            font-size: 0.4em; color: #888; letter-spacing: 0.15em; text-transform: uppercase; display: block; margin-bottom: 5px;
         }
         
-        .bento-grid {
-            display: grid;
-            gap: 1.2rem; /* Reduced gap */
-            width: 100%;
-        }
+        .bento-grid { display: grid; gap: 1rem; width: 100%; }
         
         .bento-item {
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 20px;
-            padding: 1.5rem; /* Reduced padding */
+            background: rgba(255, 255, 255, 0.04);
+            border-radius: 18px;
+            padding: 1.2rem;
             border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: transform 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
+            display: flex; flex-direction: column; justify-content: flex-start; text-align: left;
         }
-        
-        .bento-item h4 { font-size: 1.2em; }
-        .bento-item p { font-size: 0.9em; }
+        .bento-item p { font-size: 0.85em; }
 
         .reveal pre {
-            width: 100%;
-            margin: 10px 0 !important;
-            border-radius: 10px;
-            box-shadow: none;
-            border: 1px solid rgba(255,255,255,0.2);
+            width: 100%; margin: 10px 0 !important; border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.15); font-size: 0.55em;
         }
         .reveal code {
-            max-height: 350px; /* Set max height for scrollability */
-            font-size: 0.7em !important;
+            max-height: 320px;
         }
         
-        .reveal .icon {
-            font-size: 1.8em;
-            color: var(--tesla-red);
-            opacity: 0.6;
-        }
+        .reveal .icon { font-size: 1.5em; color: var(--tesla-red); opacity: 0.7; margin-bottom: 10px; }
 
-        /* Helper for top-aligned content */
-        .top-align {
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            height: 100%;
+        .slide-top-align {
+            height: 100%; display: flex; flex-direction: column; justify-content: flex-start; text-align: left;
         }
+        .slide-top-align h2, .slide-top-align h3 { text-align: center; }
+        .slide-top-align .english-accent { text-align: center; }
     </style>
 </head>
 <body>
@@ -132,155 +90,204 @@
     <div class="reveal">
         <div class="slides">
 
-            <!-- Slide 1: Cover -->
+            <!-- INTRO SECTION (Slides 1-4) -->
             <section>
-                <span class="english-accent">AI Math Magic Art Studio Teacher Training</span>
-                <h1>AI时代的教学新范式</h1>
-                <h3>铸练赋能课堂的提示词工程能力</h3>
-                <p class="mt-10">上海美高学校 | 教师专项培训</p>
-            </section>
-
-            <!-- Slide 2: The Challenge -->
-            <section class="top-align">
-                <h2>您是否正面临这些<strong class="highlight">教学挑战</strong>？</h2>
-                <span class="english-accent">ARE WE FACING THESE CHALLENGES?</span>
-                <div class="bento-grid grid-cols-2 mt-6 text-xl">
-                    <div class="bento-item fragment"><i class="fas fa-clock icon mb-3"></i><p><strong>备课耗时</strong>，查找和整合多媒体资料占据大量时间？</p></div>
-                    <div class="bento-item fragment"><i class="fas fa-users icon mb-3"></i><p>课堂互动单一，难以激发所有学生的<strong>创作兴趣</strong>？</p></div>
-                    <div class="bento-item fragment"><i class="fas fa-puzzle-piece icon mb-3"></i><p>想提供<strong>个性化辅导</strong>，但分身乏术？</p></div>
-                    <div class="bento-item fragment"><i class="fas fa-pen-ruler icon mb-3"></i><p><strong>创意性作业</strong>的评估标准难以统一，工作量巨大？</p></div>
-                </div>
-            </section>
-
-            <!-- Slide 2.1: Course Philosophy -->
-            <section class="top-align">
-                <h2>我们的教学哲学：<strong class="highlight">三位一体</strong></h2>
-                <span class="english-accent">OUR PHILOSOPHY: THE TRINITY OF MATH, CODE & ART</span>
-                <div class="relative mt-4 h-[50vh]">
-                    <img src="https://i.imgur.com/8Q9Z4sR.png" class="absolute inset-0 w-full h-full object-contain">
-                    <div class="fragment absolute top-0 right-0 w-[30%] bg-black/30 p-4 rounded-lg">
-                        <h4>艺术 <span class="english-accent !inline-block !m-0">Art</span></h4><p class="text-sm">创意的容器 & 思维的纽带。</p>
+                <section data-transition="zoom">
+                    <span class="english-accent">AI Math Magic Art Studio Teacher Training</span>
+                    <h1>AI时代的教学新范式</h1>
+                    <h3>铸练赋能课堂的提示词工程能力</h3>
+                    <p class="mt-10">上海美高学校 | 教师专项培训</p>
+                </section>
+                <section class="slide-top-align">
+                    <h2>您是否正面临这些<strong class="highlight">教学挑战</strong>？</h2>
+                    <span class="english-accent">ARE WE FACING THESE CHALLENGES?</span>
+                    <div class="bento-grid grid-cols-2 mt-6 text-xl">
+                        <div class="bento-item fragment"><i class="fas fa-clock icon"></i><p><strong>备课耗时</strong>，查找和整合多媒体资料占据大量时间？</p></div>
+                        <div class="bento-item fragment"><i class="fas fa-users icon"></i><p>课堂互动单一，难以激发所有学生的<strong>创作兴趣</strong>？</p></div>
+                        <div class="bento-item fragment"><i class="fas fa-puzzle-piece icon"></i><p>想提供<strong>个性化辅导</strong>，但分身乏术？</p></div>
+                        <div class="bento-item fragment"><i class="fas fa-pen-ruler icon"></i><p><strong>创意性作业</strong>的评估标准难以统一，工作量巨大？</p></div>
                     </div>
-                    <div class="fragment absolute bottom-0 right-[35%] w-[30%] bg-black/30 p-4 rounded-lg">
-                        <h4>数学 <span class="english-accent !inline-block !m-0">Math</span></h4><p class="text-sm">科学的根基 & 课程的灵魂。</p>
+                </section>
+                <section class="slide-top-align">
+                    <h2>我们的教学哲学：<strong class="highlight">三位一体</strong></h2>
+                    <span class="english-accent">OUR PHILOSOPHY: THE TRINITY OF MATH, CODE & ART</span>
+                    <div class="relative mt-4 h-[60vh] flex-grow">
+                        <img src="https://i.imgur.com/8Q9Z4sR.png" class="absolute inset-0 w-full h-full object-contain" alt="Trinity Diagram">
+                        <div class="fragment absolute top-0 right-0 w-[30%] bg-black/40 p-3 rounded-lg"><h4 class="text-lg">艺术 <span class="english-accent !inline-block !m-0">Art</span></h4><p class="text-sm">创意的容器 & 思维的纽带。</p></div>
+                        <div class="fragment absolute bottom-[10%] right-[35%] w-[30%] bg-black/40 p-3 rounded-lg"><h4 class="text-lg">数学 <span class="english-accent !inline-block !m-0">Math</span></h4><p class="text-sm">科学的根基 & 课程的灵魂。</p></div>
+                        <div class="fragment absolute top-0 left-0 w-[30%] bg-black/40 p-3 rounded-lg"><h4 class="text-lg">编程 <span class="english-accent !inline-block !m-0">Code</span></h4><p class="text-sm">思想的画笔 & 逻辑的语言。</p></div>
                     </div>
-                    <div class="fragment absolute top-0 left-0 w-[30%] bg-black/30 p-4 rounded-lg">
-                        <h4>编程 <span class="english-accent !inline-block !m-0">Code</span></h4><p class="text-sm">思想的画笔 & 逻辑的语言。</p>
+                    <p class="fragment text-center text-xl mt-4">我们用编程作桥梁，让学生在艺术创作中，真正爱上数学。</p>
+                </section>
+                <section class="slide-top-align">
+                    <h2>教学理念：用<strong class="highlight">费曼学习法</strong>驾驭AI</h2>
+                    <span class="english-accent">THE FEYNMAN TECHNIQUE AS OUR AI PEDAGOGY</span>
+                    <p class="mt-4 text-xl text-center">费曼学习法的核心是“以教为学”，这与提示词工程的本质不谋而合。</p>
+                    <div class="bento-grid grid-cols-2 grid-rows-2 mt-6">
+                        <div class="bento-item fragment"><h4>1. 锁定概念 <span class="english-accent !inline-block !m-0">Concept</span></h4><p>老师明确本节课的数学知识点。</p></div>
+                        <div class="bento-item fragment"><h4>2. 尝试教授 <span class="english-accent !inline-block !m-0">Teach</span></h4><p>老师编写提示词，<strong>“教”AI</strong>如何向学生解释这个概念。</p></div>
+                        <div class="bento-item fragment"><h4>3. 回顾纠错 <span class="english-accent !inline-block !m-0">Review</span></h4><p>审视AI生成的作品，如果“教案”（提示词）有漏洞，就迭代优化。</p></div>
+                        <div class="bento-item fragment"><h4>4. 简化提炼 <span class="english-accent !inline-block !m-0">Simplify</span></h4><p>不断优化，直到AI能用最直观、最富美感的方式呈现给学生。</p></div>
                     </div>
-                </div>
-                <p class="fragment mt-4 text-xl">我们用编程作桥梁，让学生在艺术创作中，真正爱上数学。</p>
+                </section>
             </section>
 
-            <!-- Slide 2.2: Core Competencies -->
-            <section class="top-align">
-                <h2>赋能未来：内化<strong class="highlight">中学数学核心素养</strong></h2>
-                <span class="english-accent">EMPOWERING THE FUTURE: INTERNALIZING CORE MATH COMPETENCIES</span>
-                <div class="bento-grid grid-cols-3 grid-rows-2 mt-6 text-lg">
-                    <div class="bento-item fragment"><i class="fas fa-shapes icon mb-2"></i><h4>数学抽象</h4><p class="text-sm mt-1">将具体问题抽象为数量关系与空间形式。</p></div>
-                    <div class="bento-item fragment"><i class="fas fa-calculator icon mb-2"></i><h4>数学运算</h4><p class="text-sm mt-1">在代码中直观感受运算法则。</p></div>
-                    <div class="bento-item fragment"><i class="fas fa-lightbulb icon mb-2"></i><h4>直观想象</h4><p class="text-sm mt-1">利用图形理解和解决数学问题。</p></div>
-                    <div class="bento-item fragment"><i class="fas fa-sitemap icon mb-2"></i><h4>逻辑推理</h4><p class="text-sm mt-1">编程中的条件判断即是严谨推理的训练。</p></div>
-                    <div class="bento-item fragment"><i class="fas fa-chart-bar icon mb-2"></i><h4>数据分析</h4><p class="text-sm mt-1">将数据转化为可视化艺术，培养数据处理能力。</p></div>
-                    <div class="bento-item fragment"><i class="fas fa-drafting-compass icon mb-2"></i><h4>数学建模</h4><p class="text-sm mt-1">用代码构建模型，解决现实问题。</p></div>
-                </div>
-            </section>
-
-            <!-- Slide 2.3: Teaching Model -->
-            <section class="top-align">
-                <h2>教学模式创新：从<strong class="highlight">“Teaching”</strong>到<strong class="highlight">“Coaching”</strong></h2>
-                <span class="english-accent">INSTRUCTIONAL MODEL INNOVATION: FROM TEACHING TO COACHING</span>
-                <div class="flex mt-8 gap-8">
-                    <div class="w-1/2 fragment">
-                        <h3 class="text-2xl text-gray-400">传统教学 (前喻式)</h3>
-                        <ul class="list-disc list-inside mt-4 text-left text-gray-400 text-xl">
-                            <li>老师是知识的灌输者</li>
-                            <li>固定的逐字教案</li>
-                            <li>课堂受时空限制</li>
-                            <li>学科壁垒分明</li>
-                        </ul>
-                    </div>
-                    <div class="w-1/2 fragment">
-                        <h3 class="text-3xl text-white">我们的模式 (后喻式)</h3>
-                        <ul class="list-disc list-inside mt-4 text-left text-2xl text-white">
-                            <li class="fragment highlight-current-blue">老师是<strong class="highlight">学习的促进者</strong></li>
-                            <li class="fragment highlight-current-blue">流程统一，内容不一的<strong class="highlight">Coaching模式</strong></li>
-                            <li class="fragment highlight-current-blue">虚实结合，数据可追溯</li>
-                            <li class="fragment highlight-current-blue"><strong class="highlight">学科交叉，学科融合</strong></li>
-                        </ul>
-                    </div>
-                </div>
-                <p class="fragment mt-10 text-2xl">在“后喻文化”时代，我们与学生是<strong class="highlight">共同探索的伙伴</strong>，教与学的界限不再限定。</p>
-            </section>
-
-            <!-- Slide 3: Mental Model (original position) -->
-             <section>
-                <h2>核心心智模型</h2>
-                <h3>从“搜索引擎”到“教学设计伙伴”</h3>
-                <p class="fragment">常见的误区：把AI当作一个“更会说话的搜索引擎”。</p>
-                <p class="fragment" style="color: #e74c3c;">这只能发挥它 10% 的能力。</p>
-                <p class="fragment" style="margin-top: 30px;">
-                    <strong>正确的心智模型：</strong><br>
-                    把AI视为一个不知疲倦、博学多才的<span class="fragment highlight-blue">“教学设计伙伴”</span>。
-                </p>
-                <p class="fragment">
-                    你的角色是 <span style="color: #f1c40f;">“课程总设计师”</span>，负责提出教育目标和教学理念，AI负责将你的理念快速转化为具体的教学资源。
-                </p>
-            </section>
-            
-            <!-- Slide 4: Feynman + AI (original position) -->
-            <section class="top-align">
-                <h2>教学理念：用<strong class="highlight">费曼学习法</strong>驾驭AI</h2>
-                <span class="english-accent">THE FEYNMAN TECHNIQUE AS OUR AI PEDAGOGY</span>
-                <p class="mt-4 text-xl">费曼学习法的核心是“以教为学”，这与提示词工程的本质不谋而合。</p>
-                <div class="bento-grid grid-cols-2 grid-rows-2 mt-6">
-                    <div class="bento-item fragment"><h4>1. 锁定概念 <span class="english-accent !inline-block !m-0">Concept</span></h4><p>老师明确本节课的数学知识点。</p></div>
-                    <div class="bento-item fragment"><h4>2. 尝试教授 <span class="english-accent !inline-block !m-0">Teach</span></h4><p>老师编写提示词，<strong>“教”AI</strong>如何向学生解释这个概念。</p></div>
-                    <div class="bento-item fragment"><h4>3. 回顾纠错 <span class="english-accent !inline-block !m-0">Review</span></h4><p>审视AI生成的作品，如果效果不佳，说明我们的“教案”（提示词）有漏洞。</p></div>
-                    <div class="bento-item fragment"><h4>4. 简化提炼 <span class="english-accent !inline-block !m-0">Simplify</span></h4><p>不断优化提示词，直到AI能用最直观、最富美感的方式呈现给学生。</p></div>
-                </div>
-            </section>
-            
-            <!-- Other slides (abbreviated for brevity, you can insert the full content here) -->
-            
-            <section class="top-align">
-                 <h2>基础招式：教学提示词的<strong class="highlight">“黄金四步法”</strong></h2>
-                 <span class="english-accent">THE GOLDEN FOUR-STEP FORMULA (PTCF)</span>
-                 <div class="bento-grid grid-cols-4 mt-6 text-lg">
-                    <div class="bento-item fragment"><h3>角色<br/><span class="english-accent -mt-2 !mb-2">Persona</span></h3><p>“你是一位擅长几何图形的艺术家。”</p></div>
-                    <div class="bento-item fragment"><h3>任务<br/><span class="english-accent -mt-2 !mb-2">Task</span></h3><p>“创作一幅画，可视化地展示‘加法’。”</p></div>
-                    <div class="bento-item fragment"><h3>上下文<br/><span class="english-accent -mt-2 !mb-2">Context</span></h3><p>“面向G3学生，他们刚学会加法，画面需要生动有趣。”</p></div>
-                    <div class="bento-item fragment"><h3>格式<br/><span class="english-accent -mt-2 !mb-2">Format</span></h3><p>“风格为儿童插画，色彩鲜艳，画面比例4:3。”</p></div>
-                </div>
-            </section>
-
+            <!-- G3 Curriculum Section -->
             <section>
                 <section>
                     <h2>课程实践：<strong class="highlight">G3 探索与发现</strong></h2>
                     <span class="english-accent">GRADE 3: EXPLORATION AND DISCOVERY</span>
-                    <p class="mt-8 text-2xl">熟练掌握AI图文生成基础，用AI可视化基础数学概念，激发学生浓厚兴趣。</p>
+                    <p class="mt-8 text-2xl">目标：熟练掌握AI图文生成基础，用AI可视化基础数学概念，激发学生浓厚兴趣。</p>
                 </section>
-                <section class="top-align">
-                    <h3>G3课例 (1): 我的幸运数字</h3>
+                <section class="slide-top-align">
+                    <h3>G3课例 (1): 倍增的魔力</h3>
                     <div class="grid grid-cols-2 gap-4 mt-4">
-                        <div class="flex justify-center items-center"><img data-src="https://i.imgur.com/vH9j2Yg.png" alt="AI art for number 7" class="rounded-lg h-[400px] object-contain"></div>
-                        <div class="text-left">
-                           <p><i class="fas fa-book-open mr-2 highlight"></i><strong>核心数学概念:</strong> 数字0-9的认识</p>
-                           <p class="mt-4"><i class="fas fa-palette mr-2 highlight"></i><strong>AI创作活动:</strong> 为自己最喜欢的数字赋予性格，用AI画出“勇敢的7”。</p>
-                           <h4 class="mt-8"><i class="fas fa-magic-wand-sparkles mr-2 highlight"></i>Ideogram提示词案例</h4>
-                           <pre><code class="language-plaintext" data-trim>A cinematic movie poster featuring the number '7' as a brave knight. The number is crafted from shining silver armor, holding a glowing sword. It stands on a mountain peak against a dramatic sunset. Typography reads "The Courageous Seven". fantasy, epic, detailed, illustration. --ar 4:5</code></pre>
+                        <div class="flex justify-center items-center"><img data-src="https://i.imgur.com/qgA4D4w.png" alt="Multiplication Art" class="rounded-lg max-h-[450px] object-contain"></div>
+                        <div class="text-left flex flex-col justify-center">
+                           <p><i class="fas fa-calculator mr-2 highlight"></i><strong>数学概念:</strong> 乘法 (3x4)</p>
+                           <p class="mt-2"><i class="fas fa-palette mr-2 highlight"></i><strong>创作活动:</strong> 将3x4视觉化为3组各4个的奇幻生物，或3行4列的宝石阵列。</p>
+                           <h4 class="mt-6"><i class="fas fa-magic-wand-sparkles mr-2 highlight"></i>Ideogram提示词案例</h4>
+                           <pre><code class="language-plaintext" data-trim>Children's storybook illustration of three groups of fantasy creatures. Each group has exactly four cute, colorful, glowing monsters. The groups are arranged neatly on a magical landscape. vibrant, playful, cartoon style. --ar 4:3</code></pre>
+                        </div>
+                    </div>
+                </section>
+                <section class="slide-top-align">
+                    <h3>G3课例 (2): 镜子里的魔法</h3>
+                     <div class="grid grid-cols-2 gap-4 mt-4">
+                        <div class="flex justify-center items-center"><img data-src="https://i.imgur.com/FwT0g8M.png" alt="Symmetry Art" class="rounded-lg max-h-[450px] object-contain"></div>
+                        <div class="text-left flex flex-col justify-center">
+                           <p><i class="fas fa-vector-square mr-2 highlight"></i><strong>数学概念:</strong> 轴对称</p>
+                           <p class="mt-2"><i class="fas fa-palette mr-2 highlight"></i><strong>创作活动:</strong> 创作一幅具有完美中心对称或轴对称的蝴蝶、雪花或图腾。</p>
+                           <h4 class="mt-6"><i class="fas fa-magic-wand-sparkles mr-2 highlight"></i>Ideogram提示词案例</h4>
+                           <pre><code class="language-plaintext" data-trim>A beautiful, intricate butterfly with perfectly symmetrical wings made of glowing crystal patterns. The butterfly is in the center against a dark, magical forest background. detailed, fantasy, glowing, illustration. --ar 1:1</code></pre>
+                        </div>
+                    </div>
+                </section>
+                <section class="slide-top-align">
+                    <h3>G3课例 (3): 一半与一半的世界</h3>
+                     <div class="grid grid-cols-2 gap-4 mt-4">
+                        <div class="flex justify-center items-center"><img data-src="https://i.imgur.com/5D6eY7e.png" alt="Fraction Art" class="rounded-lg max-h-[450px] object-contain"></div>
+                        <div class="text-left flex flex-col justify-center">
+                           <p><i class="fas fa-chart-pie mr-2 highlight"></i><strong>数学概念:</strong> 分数 (1/2)</p>
+                           <p class="mt-2"><i class="fas fa-palette mr-2 highlight"></i><strong>创作活动:</strong> 创作一个半边是白天、半边是黑夜的星球，用“两种风格的融合”来体现比例感。</p>
+                           <h4 class="mt-6"><i class="fas fa-magic-wand-sparkles mr-2 highlight"></i>Ideogram提示词案例</h4>
+                           <pre><code class="language-plaintext" data-trim>A beautiful planet split down the middle. The left half shows a sunny daytime landscape with fluffy clouds. The right half shows a starry night sky with a crescent moon. The two halves blend seamlessly in the center. fantasy, vibrant, epic art. --ar 16:9</code></pre>
+                        </div>
+                    </div>
+                </section>
+            </section>
+            
+            <!-- G4 Curriculum Section -->
+            <section>
+                <section>
+                    <h2>课程实践：<strong class="highlight">G4 精准与风格</strong></h2>
+                    <span class="english-accent">GRADE 4: PRECISION AND STYLE</span>
+                    <p class="mt-8 text-2xl">目标：引入并掌握[Constraint]和[Exemplar]提示词，精确控制AI输出，并模仿特定艺术风格。</p>
+                </section>
+                 <section class="slide-top-align">
+                    <h3>G4课例 (1): 梵高画笔下的质数</h3>
+                    <div class="grid grid-cols-2 gap-4 mt-4">
+                        <div class="flex justify-center items-center"><img data-src="https://i.imgur.com/3f0i8yH.png" alt="Prime Numbers Art" class="rounded-lg max-h-[450px] object-contain"></div>
+                        <div class="text-left flex flex-col justify-center">
+                           <p><i class="fas fa-star mr-2 highlight"></i><strong>数学概念:</strong> 质数与合数</p>
+                           <p class="mt-2"><i class="fas fa-palette mr-2 highlight"></i><strong>创作活动:</strong> 模仿梵高风格，创作一幅画，画面中只有代表质数的向日葵（如2, 3, 5, 7...朵花瓣）。</p>
+                           <h4 class="mt-6"><i class="fas fa-magic-wand-sparkles mr-2 highlight"></i>Ideogram提示词案例 (Exemplar)</h4>
+                           <pre><code class="language-plaintext" data-trim>A vibrant oil painting of sunflowers in a vase, in the expressive, impasto style of Vincent van Gogh. [Exemplar] One sunflower has exactly 3 petals, another has 5 petals, and a third has 7 petals, all representing prime numbers. The background is a swirling blue sky. --ar 4:5</code></pre>
+                        </div>
+                    </div>
+                </section>
+                 <section class="slide-top-align">
+                    <h3>G4课例 (2): 角度的性格</h3>
+                    <div class="grid grid-cols-2 gap-4 mt-4">
+                        <div class="flex justify-center items-center"><img data-src="https://i.imgur.com/nJtXyYg.png" alt="Angles Art" class="rounded-lg max-h-[450px] object-contain"></div>
+                        <div class="text-left flex flex-col justify-center">
+                           <p><i class="fas fa-ruler-combined mr-2 highlight"></i><strong>数学概念:</strong> 锐角、直角、钝角</p>
+                           <p class="mt-2"><i class="fas fa-palette mr-2 highlight"></i><strong>创作活动:</strong> 将角拟人化，创作“温和的锐角先生”、“严肃的直角法官”和“懒洋洋的钝角先生”。</p>
+                           <h4 class="mt-6"><i class="fas fa-magic-wand-sparkles mr-2 highlight"></i>Ideogram提示词案例</h4>
+                           <pre><code class="language-plaintext" data-trim>A cute, personified right angle character dressed as a judge with a stern expression. The character is made of clean, sharp lines, forming a perfect 90-degree corner. The character is holding a gavel. simple character design, illustration, white background. --ar 1:1</code></pre>
+                        </div>
+                    </div>
+                </section>
+                 <section class="slide-top-align">
+                    <h3>G4课例 (3): 埃舍尔的无限镶嵌</h3>
+                    <div class="grid grid-cols-2 gap-4 mt-4">
+                        <div class="flex justify-center items-center"><img data-src="https://i.imgur.com/L7r0A3C.png" alt="Tessellation Art" class="rounded-lg max-h-[450px] object-contain"></div>
+                        <div class="text-left flex flex-col justify-center">
+                           <p><i class="fas fa-border-all mr-2 highlight"></i><strong>数学概念:</strong> 平面图形的密铺 (Tessellation)</p>
+                           <p class="mt-2"><i class="fas fa-palette mr-2 highlight"></i><strong>创作活动:</strong> 模仿M.C. Escher的风格，设计一个可以用鱼或鸟的形状进行无缝拼接的图案。</p>
+                           <h4 class="mt-6"><i class="fas fa-magic-wand-sparkles mr-2 highlight"></i>Ideogram提示词案例 (Constraint + Exemplar)</h4>
+                           <pre><code class="language-plaintext" data-trim>A seamless tessellation pattern of interlocking fish and birds, in the mind-bending style of M.C. Escher. [Exemplar] The color palette should only be black, white, and red. [Constraint] The transition from fish to bird should be smooth and logical. graphic design, intricate, optical illusion. --ar 16:9</code></pre>
                         </div>
                     </div>
                 </section>
             </section>
 
-            <!-- ... Other slides here ... -->
-
+            <!-- G5 Curriculum Section -->
             <section>
-                <h1>Q&A</h1>
-                <h3 class="mt-4">交流与探讨</h3>
-                <p class="mt-12">Happy Prompting!</p>
+                <section>
+                    <h2>课程实践：<strong class="highlight">G5 叙事与抽象</strong></h2>
+                    <span class="english-accent">GRADE 5: NARRATION AND ABSTRACTION</span>
+                    <p class="mt-8 text-2xl">目标：引入并掌握[Narrative]和[Emotion]提示词，创作系列图像讲述故事、演绎逻辑，挑战更抽象的概念。</p>
+                </section>
+                <section class="slide-top-align">
+                    <h3>G5课例 (1): 寻宝之旅：寻找X</h3>
+                    <div class="grid grid-cols-2 gap-4 mt-4">
+                        <div class="flex justify-center items-center"><img data-src="https://i.imgur.com/lO8S5uA.png" alt="Algebra Story Art" class="rounded-lg max-h-[450px] object-contain"></div>
+                        <div class="text-left flex flex-col justify-center">
+                           <p><i class="fas fa-x-ray mr-2 highlight"></i><strong>数学概念:</strong> 变量(x, y)与解方程</p>
+                           <p class="mt-2"><i class="fas fa-palette mr-2 highlight"></i><strong>创作活动:</strong> 创作一个至少3幅的系列图像故事：1.发现藏宝图；2.经历重重困难；3.最终找到标记着“X”的神秘宝箱。</p>
+                           <h4 class="mt-6"><i class="fas fa-magic-wand-sparkles mr-2 highlight"></i>Ideogram提示词案例 (Narrative)</h4>
+                           <pre><code class="language-plaintext" data-trim>A 3-panel comic strip telling a story. [Narrative] Panel 1: An adventurer discovers an ancient, glowing treasure map in a dark cave. Panel 2: The adventurer crosses a rickety rope bridge over a deep canyon. Panel 3: The adventurer opens a magnificent treasure chest, revealing a single, brightly glowing letter 'X' inside. adventure, cinematic, illustration.</code></pre>
+                        </div>
+                    </div>
+                </section>
+                <section class="slide-top-align">
+                    <h3>G5课例 (2): 情感的色彩</h3>
+                    <div class="grid grid-cols-2 gap-4 mt-4">
+                        <div class="flex justify-center items-center"><img data-src="https://i.imgur.com/pA5t8YI.png" alt="Emotion Art" class="rounded-lg max-h-[450px] object-contain"></div>
+                        <div class="text-left flex flex-col justify-center">
+                           <p><i class="fas fa-theater-masks mr-2 highlight"></i><strong>数学概念:</strong> 抽象几何</p>
+                           <p class="mt-2"><i class="fas fa-palette mr-2 highlight"></i><strong>创作活动:</strong> 尝试创作“快乐的几何”或“忧郁的代数”等充满情感的抽象画。</p>
+                           <h4 class="mt-6"><i class="fas fa-magic-wand-sparkles mr-2 highlight"></i>Ideogram提示词案例 (Emotion)</h4>
+                           <pre><code class="language-plaintext" data-trim>An abstract painting expressing the feeling of "joy". [Emotion] Use vibrant, warm colors like yellow, orange, and magenta. The composition should feature dynamic, upward-moving shapes, circles, and swirling lines. In the style of Wassily Kandinsky. abstract expressionism, painting. --ar 16:9</code></pre>
+                        </div>
+                    </div>
+                </section>
+                <section class="slide-top-align">
+                    <h3>G5课例 (3): 欧几里得的回响</h3>
+                    <div class="grid grid-cols-2 gap-4 mt-4">
+                        <div class="flex justify-center items-center"><img data-src="https://i.imgur.com/u7FmZ4j.png" alt="Pythagoras Proof" class="rounded-lg max-h-[450px] object-contain"></div>
+                        <div class="text-left flex flex-col justify-center">
+                           <p><i class="fas fa-square-root-alt mr-2 highlight"></i><strong>数学概念:</strong> 勾股定理的证明</p>
+                           <p class="mt-2"><i class="fas fa-palette mr-2 highlight"></i><strong>创作活动:</strong> 这是一个大型项目，用一个7个图像的视觉序列，清晰、优美地“证明”勾股定理。</p>
+                           <h4 class="mt-6"><i class="fas fa-magic-wand-sparkles mr-2 highlight"></i>Ideogram提示词案例 (CoT + Narrative)</h4>
+                           <pre><code class="language-plaintext" data-trim>An educational infographic visually proving the Pythagorean theorem. [Narrative & CoT] Step 1: Show a right triangle with sides a, b, c. Step 2: Show squares built on each side with areas a², b², c². Step 3: Visually rearrange the area of the two smaller squares to perfectly fit inside the largest square. Clean, minimalist, educational diagram style.</code></pre>
+                        </div>
+                    </div>
+                </section>
             </section>
 
+            <!-- CONCLUSION SECTION -->
+            <section>
+                 <section class="slide-top-align">
+                    <h2>总结：<strong class="highlight">未来已来，语言即力量</strong></h2>
+                    <span class="english-accent">CONCLUSION: THE FUTURE IS NOW, LANGUAGE IS POWER</span>
+                     <blockquote class="fragment mt-6 text-2xl text-center">
+                        AI不会取代老师，但掌握AI协作能力的老师，会重塑未来的教育。
+                    </blockquote>
+                    <ul class="list-disc list-inside mt-6 text-xl">
+                        <li class="fragment"><strong>教学心法：</strong> 你是AI的课程总设计师。</li>
+                        <li class="fragment"><strong>核心技法：</strong> PTCF是基础，思维链(CoT)是进阶。</li>
+                        <li class="fragment"><strong>费曼之魂：</strong> 用“教授AI”来倒逼自己对教学内容的深度理解。</li>
+                        <li class="fragment"><strong>教师之责：</strong> <strong class="highlight">永远保持审查和批判性思维</strong>，你才是课堂的最终引导者。</li>
+                    </ul>
+                </section>
+                <section>
+                    <h1>Q&A</h1>
+                    <h3 class="mt-4">交流与探讨</h3>
+                    <p class="mt-12">Happy Prompting!</p>
+                </section>
+            </section>
         </div>
     </div>
 
@@ -292,8 +299,8 @@
         Reveal.initialize({
             hash: true,
             plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ],
-            slideNumber: 'c/t',
-            transition: 'slide',
+            slideNumber: 'c / t',
+            transition: 'fade',
         });
 
         let particles = [];
@@ -302,11 +309,10 @@
                 let canvas = p.createCanvas(p.windowWidth, p.windowHeight);
                 canvas.parent('p5-canvas-container');
                 p.noStroke();
-                for(let i = 0; i < 80; i++){
+                for(let i = 0; i < 60; i++){
                     particles.push(new Particle(p));
                 }
             };
-
             p.draw = () => {
                 p.clear();
                 particles.forEach((particle) => {
@@ -314,7 +320,6 @@
                     particle.draw();
                 });
             };
-            
             p.windowResized = () => { p.resizeCanvas(p.windowWidth, p.windowHeight); }
         };
 
@@ -322,14 +327,16 @@
             constructor(p) {
                 this.p = p;
                 this.pos = p.createVector(p.random(p.width), p.random(p.height));
-                this.vel = p5.Vector.random2D().mult(p.random(0.5, 1.5));
-                this.size = p.random(2, 4);
-                this.alpha = p.random(50, 150);
+                this.vel = p5.Vector.random2D().mult(p.random(0.2, 0.8));
+                this.size = p.random(1.5, 3.5);
+                this.alpha = p.random(30, 100);
             }
             update() {
                 this.pos.add(this.vel);
-                if (this.pos.x > this.p.width || this.pos.x < 0) this.vel.x *= -1;
-                if (this.pos.y > this.p.height || this.pos.y < 0) this.vel.y *= -1;
+                if (this.pos.x > this.p.width + 10) this.pos.x = -10;
+                if (this.pos.x < -10) this.pos.x = this.p.width + 10;
+                if (this.pos.y > this.p.height + 10) this.pos.y = -10;
+                if (this.pos.y < -10) this.pos.y = this.p.height + 10;
             }
             draw() {
                 this.p.fill(227, 25, 55, this.alpha);
