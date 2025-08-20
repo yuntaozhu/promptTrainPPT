@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>AI时代的教学新范式：铸练赋能课堂的提示词工程能力</title>
+
+    <link rel="stylesheet" href="dist/reset.css">
+    <link rel="stylesheet" href="dist/reveal.css">
+    <link rel="stylesheet" href="dist/theme/league.css" id="theme">
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="plugin/highlight/monokai.css">
+
+    <style>
+        .reveal .slides section .fragment.highlight-blue {
+            opacity: 1;
+            visibility: visible;
+        }
+        .reveal .slides section .fragment.highlight-blue.visible {
+            color: #4285F4;
+        }
+        .reveal table {
+            margin: auto;
+            border-collapse: collapse;
+            font-size: 0.8em;
+        }
+        .reveal th, .reveal td {
+            border: 1px solid #ccc;
+            padding: 8px 12px;
+        }
+        .reveal th {
+            background-color: #f2f2f2;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="reveal">
+        <div class="slides">
+            
+            <!-- Slide 1: Cover Page -->
+            <section data-background-image="https://source.unsplash.com/1600x900/?classroom,technology,teacher" data-background-opacity="0.5">
+                <h1 style="color: #fff; text-shadow: 2px 2px 4px #000;">AI时代的教学新范式</h1>
+                <h3 style="color: #fff; text-shadow: 1px 1px 2px #000;">铸练赋能课堂的提示词工程能力</h3>
+                <p style="margin-top: 50px; color: #fff; text-shadow: 1px 1px 2px #000;">主讲人：[您的姓名]</p>
+            </section>
+
+            <!-- Slide 2: Opening -->
+            <section>
+                <h2>我们是否正面临这些教学挑战？</h2>
+                <ul>
+                    <li class="fragment">备课耗时耗力，查找整理资料占据大量时间？</li>
+                    <li class="fragment">课堂互动形式单一，难以激发所有学生的兴趣？</li>
+                    <li class="fragment">想为不同水平的学生提供个性化辅导，但分身乏术？</li>
+                    <li class="fragment">批改开放性作业（如作文），工作量巨大且反馈耗时？</li>
+                </ul>
+                <p class="fragment" style="margin-top: 40px; font-weight: bold; color: #1abc9c;">
+                    AI 不是来取代老师，而是成为我们每个人的“全能教学助理”。
+                </p>
+            </section>
+
+            <!-- Slide 3: Mental Model -->
+            <section>
+                <h2>核心心智模型</h2>
+                <h3>从“万能搜索引擎”到“教学设计伙伴”</h3>
+                <p class="fragment">常见的误区：把AI当作一个“更会说话的搜索引擎”。</p>
+                <p class="fragment" style="color: #e74c3c;">这只能发挥它 10% 的能力。</p>
+                <p class="fragment" style="margin-top: 30px;">
+                    <strong>正确的心智模型：</strong><br>
+                    把AI视为一个不知疲倦、博学多才的<span class="fragment highlight-blue">“教学设计伙伴”</span>。
+                </p>
+                <p class="fragment">
+                    你的角色是 <span style="color: #f1c40f;">“课程总设计师”</span>，负责提出教育目标和教学理念，AI负责将你的理念快速转化为具体的教学资源。
+                </p>
+            </section>
+
+            <!-- Slide 4: Golden Four Steps (PTCF) -->
+            <section>
+                <h2>基础招式：教学提示词的“黄金四步法” (PTCF)</h2>
+                <ol>
+                    <li class="fragment"><strong>角色 (Persona):</strong> “设定AI的教学身份” <br><small><em>“你是一位经验丰富的高中历史老师。”</em></small></li>
+                    <li class="fragment"><strong>任务 (Task):</strong> “明确你的教学指令” <br><small><em>“请设计一个关于‘光合作用’的课堂导入活动。”</em></small></li>
+                    <li class="fragment"><strong>上下文 (Context):</strong> “提供学情和教学背景” <br><small><em>“我的学生是小学五年级，活动时间需控制在10分钟以内。”</em></small></li>
+                    <li class="fragment"><strong>格式 (Format):</strong> “定义你想要的课件形式” <br><small><em>“请以问答形式呈现，包含3个引导性问题和一个生动的比喻。”</em></small></li>
+                </ol>
+            </section>
+            
+            <!-- Slide 5: Few-shot Learning -->
+            <section>
+                <h2>AI的“备课绝技”(1)：零样本 vs. 少样本</h2>
+                <div style="display: flex; gap: 20px;">
+                    <div class="fragment" style="flex: 1; background: rgba(0,0,0,0.1); padding: 20px; border-radius: 10px;">
+                        <h4>零样本 (Zero-shot)</h4>
+                        <p>快速生成通用素材。</p>
+                        <pre><code class="language-plaintext" data-trim>
+"请为《静夜思》提供一份赏析。"
+                        </code></pre>
+                    </div>
+                    <div class="fragment" style="flex: 1; background: rgba(0,0,0,0.1); padding: 20px; border-radius: 10px;">
+                        <h4>少样本 (Few-shot)</h4>
+                        <p>定制符合你教学风格的素材。</p>
+                        <pre><code class="language-plaintext" data-trim>
+范例1：
+题目：为什么苹果会掉下来？
+答案：因为地球的引力。
+
+现在，请按此风格，为我出5道关于‘声音传播’的简答题。
+                        </code></pre>
+                    </div>
+                </div>
+                <p class="fragment" style="margin-top: 30px; color: #1abc9c;"><strong>教学价值：</strong>让AI“学会”你的出题风格和解释方式，实现个性化备课。</p>
+            </section>
+
+            <!-- Slide 6: Chain of Thought (CoT) -->
+            <section>
+                <h2>AI的“备课绝技”(2)：思维链 (CoT)</h2>
+                <p>用于生成深度解析教案，尤其适合数理化和逻辑推理。</p>
+                <p class="fragment"><strong>魔法咒语：</strong>在提示词末尾加上 <span style="color: #f1c40f;">“让我们一步一步地思考”</span></p>
+                <pre class="fragment"><code class="language-plaintext" data-trim>
+应用题：一个水池有甲乙两个进水管...两管齐开多久能注满？
+请用思维链的方式，为我生成一份详细的解题步骤，用于课堂讲解。
+                </code></pre>
+                <p class="fragment" style="font-size: 0.8em; text-align: left;"><strong>AI输出的CoT过程：</strong><br>
+                1. 理解问题 → 2. 设定单位“1” → 3. 计算各管效率 → 4. 计算合作效率 → 5. 计算总时间 → 6. 得出结论。</p>
+                <p class="fragment" style="margin-top: 20px; color: #1abc9c;"><strong>教学价值：</strong> 生成的不再是答案，而是一份逻辑清晰的教学脚本。</p>
+            </section>
+
+            <!-- Slide 7: Step-back Prompting -->
+            <section>
+                <h2>AI的“课堂魔法”(1)：后退一步法</h2>
+                <p>用于激发学生高阶思维，设计探究性问题。</p>
+                <div class="fragment" style="background: rgba(0,0,0,0.1); padding: 15px; border-radius: 5px; margin-top: 20px;">
+                    <p><strong>第一步 (后退/抽象):</strong></p>
+                    <p><small>“请先从‘国家统一’这个抽象概念出发，分析其通常需要具备哪些核心要素？”</small></p>
+                </div>
+                <div class="fragment" style="background: rgba(0,0,0,0.1); padding: 15px; border-radius: 5px; margin-top: 10px;">
+                    <p><strong>第二步 (具体/应用):</strong></p>
+                    <p><small>“很好。现在，请让学生运用刚才讨论的要素，来分析秦始皇在统一六国过程中做了哪些具体的事？”</small></p>
+                </div>
+                <p class="fragment" style="margin-top: 20px; color: #1abc9c;"><strong>教学价值：</strong> 将知识点从“记忆”提升到“分析”和“评估”的层面。</p>
+            </section>
+            
+            <!-- Slide 8: Role Playing -->
+            <section>
+                <h2>AI的“课堂魔法”(2)：角色扮演</h2>
+                <p>创造沉浸式学习体验，尤其适合语言、历史、思政课。</p>
+                <pre class="fragment"><code class="language-plaintext" data-trim>
+[角色] 你现在是伦敦一家咖啡店的服务员。
+[任务] 我将扮演游客来点餐，如果我的表达不地道，请温和地纠正我。
+
+学生：“I want a coffee.”
+AI：“Of course! (A more natural way is 'Could I get a coffee, please?')”
+                </code></pre>
+                <p class="fragment" style="margin-top: 20px; color: #1abc9c;"><strong>教学价值：</strong> 为学生提供一个零压力、可随时反馈的“语言环境”和“情景模拟器”。</p>
+            </section>
+            
+            <!-- Slide 9: Multimodal Assessment -->
+            <section>
+                <h2>AI的“评价助手”：多模态与个性化反馈</h2>
+                <p>上传学生作业图片（作文、画作、解题过程），让AI辅助批改。</p>
+                <div style="display: flex; align-items: center; gap: 20px;">
+                    <img class="fragment" src="https://source.unsplash.com/400x300/?student,writing" alt="Student writing" style="border-radius: 10px; width: 40%;">
+                    <div class="fragment" style="width: 60%; text-align: left;">
+                        <h4>提示词示例:</h4>
+                        <pre style="font-size: 0.7em;"><code class="language-plaintext" data-trim>
+[角色] 你是一位鼓励型的高中语文老师。
+[任务] 根据这张作文图片，从‘中心思想’、‘结构逻辑’和‘语言表达’三方面评价。
+[格式] 对每个方面，先指出一个优点，再提出一个改进建议。
+                        </code></pre>
+                    </div>
+                </div>
+                <p class="fragment" style="margin-top: 20px; color: #1abc9c;"><strong>教学价值：</strong> 提高批改效率，提供结构化、多维度的反馈。</p>
+            </section>
+
+            <!-- Slide 10: Best Practices for Teachers -->
+            <section>
+                <h2>教师专属的最佳实践</h2>
+                <ul>
+                    <li class="fragment"><strong>建立你的“教学提示词库”：</strong>按学科、年级、课时分类，形成个人数字化教辅资源。</li>
+                    <li class="fragment"><strong>指令要包含“教学法”：</strong>告诉AI你想用什么教学方法（如“用苏格拉底诘问法”）。</li>
+                    <li class="fragment"><strong>安全第一，验证为王：</strong>AI生成的事实性知识 <span style="color: #e74c3c;">必须</span> 经过二次核实！</li>
+                    <li class="fragment"><strong>鼓励学生一起玩：</strong>设计一堂课，让学生自己写提示词，培养他们的AI协作能力。</li>
+                </ul>
+            </section>
+
+            <!-- Slide 11: 30-Day Action Plan -->
+            <section>
+                <h2>你的30天教学创新计划</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>阶段</th>
+                            <th>核心任务</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="fragment">
+                            <td><strong>第一周：备课提效</strong></td>
+                            <td>每天用 PTCF 公式，让AI帮你完成一项备课任务。</td>
+                        </tr>
+                        <tr class="fragment">
+                            <td><strong>第二周：课堂创新</strong></td>
+                            <td>用角色扮演或后退一步法，设计一个课堂互动环节。</td>
+                        </tr>
+                        <tr class="fragment">
+                            <td><strong>第三周：评价辅助</strong></td>
+                            <td>选取5份学生作业，尝试用AI辅助生成初步反馈。</td>
+                        </tr>
+                        <tr class="fragment">
+                            <td><strong>第四周：分享共创</strong></td>
+                            <td>在备课组内，分享一个你用AI成功赋能教学的案例。</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            
+            <!-- Slide 12: Conclusion -->
+            <section>
+                <h2>总结：未来已来，语言即力量</h2>
+                <blockquote class="fragment">
+                    AI不会取代你，但掌握AI协作能力的老师，会重塑未来的教育。
+                </blockquote>
+                <ul>
+                    <li class="fragment"><strong>心智模型：</strong> 你是AI的课程总设计师。</li>
+                    <li class="fragment"><strong>核心技法：</strong> PTCF是基础，思维链(CoT)是进阶。</li>
+                    <li class="fragment"><strong>教学创新：</strong> 角色扮演、后退一步法、多模态评价。</li>
+                    <li class="fragment"><strong>你的责任：</strong> 保持审查和批判性思维，永远做课堂的引导者。</li>
+                </ul>
+            </section>
+
+            <!-- Slide 13: Q&A -->
+            <section>
+                <h1>Q&A</h1>
+                <h3>交流与探讨</h3>
+                <p style="margin-top: 50px;">Happy Prompting!</p>
+            </section>
+
+        </div>
+    </div>
+
+    <script src="dist/reveal.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script>
+        // More info about initialization & config:
+        // - https://revealjs.com/initialization/
+        // - https://revealjs.com/config/
+        Reveal.initialize({
+            hash: true,
+            // Learn about plugins: https://revealjs.com/plugins/
+            plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+        });
+    </script>
+</body>
+</html>
