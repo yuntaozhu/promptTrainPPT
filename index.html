@@ -331,18 +331,70 @@
                     <p class="mt-8 text-2xl">理解提示词背后的“为什么”，让我们的教学设计更精准、更具创造力。</p>
                 </section>
                 <section class="slide-top-align">
-                    <h3>框架的力量：从APE到ROSES</h3>
-                    <span class="english-accent">THE POWER OF FRAMEWORKS</span>
+                    <h3>提示词框架工具箱</h3>
+                    <span class="english-accent">THE PROMPT FRAMEWORK TOOLKIT</span>
                     <p class="text-center">当任务复杂时，结构化框架能帮我们理清思路，确保指令的完整性。</p>
                     <div class="bento-grid grid-cols-3 mt-6">
                         <div class="bento-item fragment">
-                            <h4>APE 框架</h4><p class="mt-2 text-sm"><strong>行动(A), 目的(P), 期望(E)</strong><br/>适合快速、明确的任务分配。</p>
+                            <h4>APE 框架</h4><p class="mt-2 text-sm"><strong>行动, 目的, 期望</strong><br/>最适用：快速出题、定义单个创作任务。</p>
                         </div>
                         <div class="bento-item fragment">
-                            <h4>CARE 框架</h4><p class="mt-2 text-sm"><strong>语境(C), 行动(A), 结果(R), 示例(E)</strong><br/>适合需要创意或模仿风格的任务。</p>
+                            <h4>CARE 框架</h4><p class="mt-2 text-sm"><strong>语境, 行动, 结果, 示例</strong><br/>最适用：设计带“范画”或风格参考的创意写作与艺术项目。</p>
                         </div>
                         <div class="bento-item fragment">
-                            <h4>ROSES 框架</h4><p class="mt-2 text-sm"><strong>角色(R), 目标(O), 场景(S), 方案(E), 步骤(S)</strong><br/>适合复杂的、从0到1的项目制学习设计。</p>
+                            <h4>ROSES 框架</h4><p class="mt-2 text-sm"><strong>角色, 目标, 场景, 方案, 步骤</strong><br/>最适用：从0到1规划一个完整的PBL项目或一个学期的课程模块。</p>
+                        </div>
+                    </div>
+                </section>
+                <section class="slide-top-align">
+                    <h3>AI的思考术：<strong class="highlight">思维链 (CoT)</strong> 与 <strong class="highlight">后退一步法</strong></h3>
+                    <span class="english-accent">AI'S THINKING PROCESS: COT & STEP-BACK</span>
+                    <div class="flex gap-6 mt-6">
+                        <div class="w-1/2 fragment">
+                            <h4>思维链 (Chain of Thought)</h4>
+                            <p class="text-sm">通过指令“让我们一步一步地思考”，引导AI展示推理过程。</p>
+                            <p class="text-sm mt-2"><strong class="highlight">教学价值：</strong> 生成可直接用于课堂的、逻辑清晰的解题教案和实验步骤。</p>
+                        </div>
+                        <div class="w-1/2 fragment">
+                            <h4>后退一步法 (Step-back)</h4>
+                            <p class="text-sm">先问一个更宏观、更根本性的问题，再问具体问题。</p>
+                             <p class="text-sm mt-2"><strong class="highlight">教学价值：</strong> 设计出能激发学生高阶思维的探究性问题，避免标准答案。</p>
+                        </div>
+                    </div>
+                </section>
+                 <section class="slide-top-align">
+                    <h3>AI的“临摹课”：<strong class="highlight">少样本学习 (Few-shot)</strong>的力量</h3>
+                    <span class="english-accent">AI'S LEARNING STYLE: THE POWER OF FEW-SHOT PROMPTING</span>
+                    <p class="mt-4 text-center">这是提升AI输出质量和风格稳定性的最强技巧。</p>
+                    <div class="fragment mt-6 text-left">
+                        <h4>工作原理：</h4>
+                        <p>在提示词中提供1-3个“输入→输出”的范例，为AI提供一个清晰的模仿模式。</p>
+                    </div>
+                    <div class="fragment mt-4 text-left">
+                         <h4>教学应用：</h4>
+                         <p>定制符合您个人风格的<strong class="highlight">作业评语</strong>。</p>
+                         <pre><code class="language-plaintext" data-trim>
+这是我的评语风格范例：
+作文片段1: ...
+我的评语1: 结构清晰，论点有力。如果能在结尾处再升华一下主题就更好了。
+
+现在，请用我的风格，为以下作文片段写评语：...
+                         </code></pre>
+                    </div>
+                </section>
+                 <section class="slide-top-align">
+                    <h3>前沿技术：<strong class="highlight">思维树 (ToT)</strong> 与 <strong class="highlight">ReAct 框架</strong></h3>
+                    <span class="english-accent">FRONTIER TECHNIQUES: TREE OF THOUGHTS & REACT</span>
+                     <div class="flex gap-6 mt-6">
+                        <div class="w-1/2 fragment">
+                            <h4>思维树 (Tree of Thoughts)</h4>
+                            <p class="text-sm">让AI同时探索多个创意路径，然后评估并选择最佳方案。</p>
+                            <p class="text-sm mt-2"><strong class="highlight">教学价值：</strong> 用于课程设计头脑风暴，为同一个教学目标生成多种不同的活动方案供老师选择。</p>
+                        </div>
+                        <div class="w-1/2 fragment">
+                            <h4>ReAct 框架 (Reason + Act)</h4>
+                            <p class="text-sm">让AI调用外部工具（如网络搜索）来获取创作或备课素材。</p>
+                             <p class="text-sm mt-2"><strong class="highlight">教学价值：</strong> 设计需要背景研究的PBL项目，让AI辅助学生进行资料搜集和整理。</p>
                         </div>
                     </div>
                 </section>
@@ -352,48 +404,49 @@
             <!-- PART 5: THE "NOW WHAT" - CONCLUSION           -->
             <!-- ============================================= -->
             
-            <section class="slide-top-align">
-                <h2>教师专属的<strong class="highlight">最佳实践</strong></h2>
-                <span class="english-accent">BEST PRACTICES FOR EDUCATORS</span>
-                <ul class="list-disc list-inside mt-6 text-xl space-y-4">
-                    <li class="fragment"><strong>建立你的“教学提示词库”：</strong>按学科、年级、课时分类，形成个人数字化教辅资源。</li>
-                    <li class="fragment"><strong>指令要包含“教学法”：</strong>告诉AI你想用什么教学方法（如“用苏格拉底诘问法”）。</li>
-                    <li class="fragment"><strong>安全第一，验证为王：</strong>AI生成的事实性知识 <span style="color: #e74c3c;">必须</span> 经过二次核实！</li>
-                    <li class="fragment"><strong>鼓励学生一起玩：</strong>设计一堂课，让学生自己写提示词，培养他们的AI协作能力。</li>
-                </ul>
-            </section>
-            
-            <section class="slide-top-align">
-                <h2>你的30天<strong class="highlight">教学创新计划</strong></h2>
-                <span class="english-accent">YOUR 30-DAY INNOVATION PLAN</span>
-                <div class="bento-grid grid-cols-2 grid-rows-2 mt-6">
-                    <div class="bento-item fragment"><h4>第一周: 备课提效</h4><p>每天用 PTCF 公式，让AI帮你完成一项备课任务。</p></div>
-                    <div class="bento-item fragment"><h4>第二周: 课堂创新</h4><p>用角色扮演或后退一步法，设计一个课堂互动环节。</p></div>
-                    <div class="bento-item fragment"><h4>第三周: 评价辅助</h4><p>选取5份学生作业，尝试用AI辅助你生成初步反馈。</p></div>
-                    <div class="bento-item fragment"><h4>第四周: 分享共创</h4><p>在备课组内，分享一个你用AI成功赋能教学的案例。</p></div>
-                </div>
-            </section>
-
             <section>
-                <h2>总结：<strong class="highlight">未来已来，语言即力量</strong></h2>
-                <span class="english-accent">CONCLUSION: THE FUTURE IS NOW, LANGUAGE IS POWER</span>
-                 <blockquote class="fragment mt-8 text-2xl text-center">
-                    AI不会取代老师，但掌握AI协作能力的老师，会重塑未来的教育。
-                </blockquote>
-                <ul class="list-disc list-inside mt-8 text-xl">
-                    <li class="fragment"><strong>教学心法：</strong> 你是AI的课程总设计师。</li>
-                    <li class="fragment"><strong>核心技法：</strong> PTCF是基础，思维链(CoT)是进阶。</li>
-                    <li class="fragment"><strong>费曼之魂：</strong> 用“教授AI”来倒逼自己对教学内容的深度理解。</li>
-                    <li class="fragment"><strong>教师之责：</strong> <strong class="highlight">永远保持审查和批判性思维</strong>，你才是课堂的最终引导者。</li>
-                </ul>
-            </section>
+                <section class="slide-top-align">
+                    <h2>教师专属的<strong class="highlight">最佳实践</strong></h2>
+                    <span class="english-accent">BEST PRACTICES FOR EDUCATORS</span>
+                    <ul class="list-disc list-inside mt-6 text-xl space-y-4">
+                        <li class="fragment"><strong>建立你的“教学提示词库”：</strong>按学科、年级、课时分类，形成个人数字化教辅资源。</li>
+                        <li class="fragment"><strong>指令要包含“教学法”：</strong>告诉AI你想用什么教学方法（如“用苏格拉底诘问法”）。</li>
+                        <li class="fragment"><strong>安全第一，验证为王：</strong>AI生成的事实性知识 <span style="color: #e74c3c;">必须</span> 经过二次核实！</li>
+                        <li class="fragment"><strong>鼓励学生一起玩：</strong>设计一堂课，让学生自己写提示词，培养他们的AI协作能力。</li>
+                    </ul>
+                </section>
+                
+                <section class="slide-top-align">
+                    <h2>你的30天<strong class="highlight">教学创新计划</strong></h2>
+                    <span class="english-accent">YOUR 30-DAY INNOVATION PLAN</span>
+                    <div class="bento-grid grid-cols-2 grid-rows-2 mt-6">
+                        <div class="bento-item fragment"><h4>第一周: 备课提效</h4><p>每天用 PTCF 公式，让AI帮你完成一项备课任务。</p></div>
+                        <div class="bento-item fragment"><h4>第二周: 课堂创新</h4><p>用角色扮演或后退一步法，设计一个课堂互动环节。</p></div>
+                        <div class="bento-item fragment"><h4>第三周: 评价辅助</h4><p>选取5份学生作业，尝试用AI辅助你生成初步反馈。</p></div>
+                        <div class="bento-item fragment"><h4>第四周: 分享共创</h4><p>在备课组内，分享一个你用AI成功赋能教学的案例。</p></div>
+                    </div>
+                </section>
 
-            <section>
-                <h1>Q&A</h1>
-                <h3 class="mt-4">交流与探讨</h3>
-                <p class="mt-12">Happy Prompting!</p>
-            </section>
+                <section>
+                    <h2>总结：<strong class="highlight">未来已来，语言即力量</strong></h2>
+                    <span class="english-accent">CONCLUSION: THE FUTURE IS NOW, LANGUAGE IS POWER</span>
+                     <blockquote class="fragment mt-8 text-2xl text-center">
+                        AI不会取代老师，但掌握AI协作能力的老师，会重塑未来的教育。
+                    </blockquote>
+                    <ul class="list-disc list-inside mt-8 text-xl">
+                        <li class="fragment"><strong>教学心法：</strong> 你是AI的课程总设计师。</li>
+                        <li class="fragment"><strong>核心技法：</strong> PTCF是基础，思维链(CoT)是进阶。</li>
+                        <li class="fragment"><strong>费曼之魂：</strong> 用“教授AI”来倒逼自己对教学内容的深度理解。</li>
+                        <li class="fragment"><strong>教师之责：</strong> <strong class="highlight">永远保持审查和批判性思维</strong>，你才是课堂的最终引导者。</li>
+                    </ul>
+                </section>
 
+                <section>
+                    <h1>Q&A</h1>
+                    <h3 class="mt-4">交流与探讨</h3>
+                    <p class="mt-12">Happy Prompting!</p>
+                </section>
+            </section>
         </div>
     </div>
 
